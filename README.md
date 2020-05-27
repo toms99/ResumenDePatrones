@@ -1,4 +1,5 @@
 ![Logo del ITCR](https://www.tec.ac.cr/sites/default/files/media/branding/logo-tec.png)
+
 **Instituto Tecnológico de Costa Rica.**
 
 **Área de Ingeniería en Computadores.**
@@ -73,69 +74,7 @@ Los pasos para escribir un Adapter pueden resumirse de la siguiente manera:
 - [ ] El Adaptador "mapea" la interfaz del receptor.
 - [ ] El receptor usa la nueva interfaz.
 
-A continuación una implentación en C++ tomada de [Source Making](https://sourcemaking.com/design_patterns/adapter/cpp/1).
-
-```
-#include <iostream.h>
-
-typedef int Coordinate;
-typedef int Dimension;
-
-// Desired interface
-class Rectangle
-{
-  public:
-    virtual void draw() = 0;
-};
-
-// Legacy component
-class LegacyRectangle
-{
-  public:
-    LegacyRectangle(Coordinate x1, Coordinate y1, Coordinate x2, Coordinate y2)
-    {
-        x1_ = x1;
-        y1_ = y1;
-        x2_ = x2;
-        y2_ = y2;
-        cout << "LegacyRectangle:  create.  (" << x1_ << "," << y1_ << ") => ("
-          << x2_ << "," << y2_ << ")" << endl;
-    }
-    void oldDraw()
-    {
-        cout << "LegacyRectangle:  oldDraw.  (" << x1_ << "," << y1_ << 
-          ") => (" << x2_ << "," << y2_ << ")" << endl;
-    }
-  private:
-    Coordinate x1_;
-    Coordinate y1_;
-    Coordinate x2_;
-    Coordinate y2_;
-};
-
-// Adapter wrapper
-class RectangleAdapter: public Rectangle, private LegacyRectangle
-{
-  public:
-    RectangleAdapter(Coordinate x, Coordinate y, Dimension w, Dimension h):
-      LegacyRectangle(x, y, x + w, y + h)
-    {
-        cout << "RectangleAdapter: create.  (" << x << "," << y << 
-          "), width = " << w << ", height = " << h << endl;
-    }
-    virtual void draw()
-    {
-        cout << "RectangleAdapter: draw." << endl;
-        oldDraw();
-    }
-};
-
-int main()
-{
-  Rectangle *r = new RectangleAdapter(120, 200, 60, 40);
-  r->draw();
-}
-```
+En el repositorio se muestra una implentación en C++ tomada de [Source Making](https://sourcemaking.com/design_patterns/adapter/cpp/1) cuyo output es el siguiente.
 #### Output
 ```
 LegacyRectangle:  create.  (120,200) => (180,240)
@@ -168,84 +107,8 @@ Los pasos para implementar un Observer pueden resumirse de la siguiente manera:
  - [ ] El sujeto emite señales al Observer.
  - [ ] Se pueden utilizar dos métodos: los observadores "piden" las señales o el sujeto las "envía".
 
-A continuación, una implementación en C++ del patrón Observer tomado de [Source Making](https://sourcemaking.com/design_patterns/observer).
-```
-#include <iostream>
-#include <vector>
-using namespace std;
+En el repositorio se muestra una implementación en C++ del patrón Observer tomado de [Source Making](https://sourcemaking.com/design_patterns/observer) cuyo output es el siguiente.
 
-class Subject {
-    // 1. "independent" functionality
-    vector < class Observer * > views; // 3. Coupled only to "interface"
-    int value;
-  public:
-    void attach(Observer *obs) {
-        views.push_back(obs);
-    }
-    void setVal(int val) {
-        value = val;
-        notify();
-    }
-    int getVal() {
-        return value;
-    }
-    void notify();
-};
-
-class Observer {
-    // 2. "dependent" functionality
-    Subject *model;
-    int denom;
-  public:
-    Observer(Subject *mod, int div) {
-        model = mod;
-        denom = div;
-        // 4. Observers register themselves with the Subject
-        model->attach(this);
-    }
-    virtual void update() = 0;
-  protected:
-    Subject *getSubject() {
-        return model;
-    }
-    int getDivisor() {
-        return denom;
-    }
-};
-
-void Subject::notify() {
-  // 5. Publisher broadcasts
-  for (int i = 0; i < views.size(); i++)
-    views[i]->update();
-}
-
-class DivObserver: public Observer {
-  public:
-    DivObserver(Subject *mod, int div): Observer(mod, div){}
-    void update() {
-        // 6. "Pull" information of interest
-        int v = getSubject()->getVal(), d = getDivisor();
-        cout << v << " div " << d << " is " << v / d << '\n';
-    }
-};
-
-class ModObserver: public Observer {
-  public:
-    ModObserver(Subject *mod, int div): Observer(mod, div){}
-    void update() {
-        int v = getSubject()->getVal(), d = getDivisor();
-        cout << v << " mod " << d << " is " << v % d << '\n';
-    }
-};
-
-int main() {
-  Subject subj;
-  DivObserver divObs1(&subj, 4); // 7. Client configures the number and
-  DivObserver divObs2(&subj, 3); //    type of Observers
-  ModObserver modObs3(&subj, 3);
-  subj.setVal(14);
-}
-```
 #### Output
 ```
 14 div 4 is 3
@@ -257,3 +120,5 @@ int main() {
 - [Sánchez, M. A. (2020, February 27). Patrones de Diseño de Software. Retrieved May 27, 2020](https://medium.com/all-you-need-is-clean-code/patrones-de-dise%C3%B1o-b7a99b8525e)
 - [Leiva, A. (2016, March 05). Patrones de diseño de software. Retrieved May 27, 2020](https://devexperto.com/patrones-de-diseno-software/)
 - [N.d., N. (2007). Design Patterns and Refactoring. Retrieved May 27, 2020](https://sourcemaking.com/design_patterns/adapter)
+
+[Aquí](https://drive.google.com/file/d/1QdUGDE2Dw7k_31784ExMrkh-W9y4AGII/view?usp=sharing) se puede acceder al PDF de este repositorio.
