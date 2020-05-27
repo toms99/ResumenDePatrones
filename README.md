@@ -92,7 +92,7 @@ Existe un Sujeto que representa una abstracción parecida a un núcleo (componen
 
 El Observer contiene una lista de todos los observadores y cuando recibe la señal entonces recorre la lista para actualizarlos.
 
-![Diagrama de clases sobre un observer](https://lh3.googleusercontent.com/IzAof5Yh-4ksIAZVrNZOB_j7byAwUJzES4h0nK7SHyIkGPg6tUvRmlPboR4BXR_Odw5QOjvimqZqBJNoOGuuQavNMLmcLYNIwU8imOaMKi8x5pPv_kAdAbbJR59ayAF0HuVrOyOJF2i_tT5Iwh_JymMm9DO5NAfRzXWRKD285X0AqHFCAP688OuPlRiA9jGjoBewqCmfznF6okVcsgAyPBN9VvzW8XDzQLg3U6jj8uD0D0PZic38-EYCT_c_9BScS23bKcQgkDQtOH4CgfjOvk5LjAJIsfHXWp4EQGa4RwERd9fv7WRcr6tzDwT2s71bm77uiDIUAzX1O05ac5SK0ozZTlwu4VUzIGRrjf8h35MmIuJHjzVexdQttfGg0-Gl2q9Tvf1n_febt3DPLoFaKoCf_mN-SX32fRjs9kVeISZRATNiighhlpY72g5C1vn-bEoCCVeYNpPuh1m30MiMtwrLWMR0zPxLicRdAzx0Hcf8dIeLZvcu_a8jxvCpFmkYzH-TfiEvABRtc64Dy3zj8EakBRQLRqYE2hiRwruppuizZqGjwaSRzNZ24oo9CpjcFoQIphIkB6INTp6DZG4qI6-ovVw9tpu3mlB9IaVGcQawNl3Zrhw-DAhnVQaG9OStOQuUWiaKtDloBjZLsOyHlUv2RqNgpzPHIcGnpGvmEvyRrgKDSG3ruwnyqN4f=w980-h567-no?authuser=0)
+![Diagrama de clases sobre un observer](https://user-images.githubusercontent.com/38998436/83078221-543a3380-a036-11ea-9ed2-b00291a0138e.png)
 
 Por ejemplo, un sistema de subastas. Existe un subastador (Sujeto) que recibe todas las ofertas (observadores) y declara la más alta como el precio actual. Así, todos los compradores son notificados del nuevo precio y el ciclo se reinicia cuando se emite una oferta mayor.
 
