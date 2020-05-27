@@ -64,7 +64,7 @@ Lo que diferencia a un puente de un adaptador es que el primero conecta dos part
 
 Por ejemplo, un teléfono móvil transfiere información a través de un puerto micro-USB y una computadora lo hace con USB. Si se requiere comunicar ambos se debe conseguir un cable que conecte ambas interfaces.
 
-![Diagrama de clases sobre un ejemplo de Adapter](https://lh3.googleusercontent.com/wnF0jT-02CmPrc-__lm7SBTDUGC1FFfeS31P38ddDEmYe29mwHN1eyw0QQ9Zh1H2-fqMLb1cJii2n5s6fw7ha8qy8zXwdoUJDMUrxgUu0soyPLo5DoP8DNMUFv0N4eZS5ZfGW8RM9fYas9rFJ_a1lL23K1SxYlhq0akSOn-9cUK9BYGJ3VGRhD1Yb0_mOc4n2vr59ma-FxKUbQRIJpK49e68lEKUWhtWEfjyfW1nsK6_e0RxB3pjCfUCnBgAsbZ9mhbUBTbL74WJ8MNEkwl31VPnQspAUu6vkQioZ7ZDoYboMDlM7xx_WdMxfS3VgkW-0dmyMEWG4Po2ruH5AdQp7sfp0_NfZc-0QPfS65UQCp_v-_qXzt6z67K-VePwi2ZJCHo1N5ufiIi9jzoLlic3zMIlizz8BKVdkKH1cFmfKgEyS58pyxNeOx4ud-ZcuQYXb62InUs_FNQrTpxfl1QWzfurAwD41_qfZfDpbxoJbWKjhHya2yT8_HCrgl4PMvrhQAjkkMiN3Bg9O5wOA3Xjn46OlT9h2oA2KaAkNbfKsSJb5wZpmm-7BhXNELKtAN8RdRMFySxbihEChHDZrC3vGjqSSvfbP95T5a0EamkIITO-8EHBbg6cm2FagqWzMamKMV0qF06sYlIongCBD9O_ItprKsteO0hLQm7Ef4EEJ9FLGtlw_cg_45A9jPk=w1366-h292-no?authuser=0)
+![Diagrama de clases sobre un ejemplo de Adapter](https://user-images.githubusercontent.com/38998436/83078301-821f7800-a036-11ea-9abd-90259bb495df.png)
 
 Los pasos para escribir un Adapter pueden resumirse de la siguiente manera:
 - [ ] Identificar los componentes que se requieren conectar entre sí (emisor y receptor).
