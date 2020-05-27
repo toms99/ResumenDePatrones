@@ -1,59 +1,79 @@
-#include <iostream.h>
+/*
+Tomado de Source Making
+*/
 
-typedef int Coordinate;
-typedef int Dimension;
+#include <iostream>
+#include <vector>
+using namespace std;
 
-// Desired interface
-class Rectangle
-{
+class Subject {
+    // 1. "independent" functionality
+    vector < class Observer * > views; // 3. Coupled only to "interface"
+    int value;
   public:
-    virtual void draw() = 0;
+    void attach(Observer *obs) {
+        views.push_back(obs);
+    }
+    void setVal(int val) {
+        value = val;
+        notify();
+    }
+    int getVal() {
+        return value;
+    }
+    void notify();
 };
 
-// Legacy component
-class LegacyRectangle
-{
+class Observer {
+    // 2. "dependent" functionality
+    Subject *model;
+    int denom;
   public:
-    LegacyRectangle(Coordinate x1, Coordinate y1, Coordinate x2, Coordinate y2)
-    {
-        x1_ = x1;
-        y1_ = y1;
-        x2_ = x2;
-        y2_ = y2;
-        cout << "LegacyRectangle:  create.  (" << x1_ << "," << y1_ << ") => ("
-          << x2_ << "," << y2_ << ")" << endl;
+    Observer(Subject *mod, int div) {
+        model = mod;
+        denom = div;
+        // 4. Observers register themselves with the Subject
+        model->attach(this);
     }
-    void oldDraw()
-    {
-        cout << "LegacyRectangle:  oldDraw.  (" << x1_ << "," << y1_ << 
-          ") => (" << x2_ << "," << y2_ << ")" << endl;
+    virtual void update() = 0;
+  protected:
+    Subject *getSubject() {
+        return model;
     }
-  private:
-    Coordinate x1_;
-    Coordinate y1_;
-    Coordinate x2_;
-    Coordinate y2_;
-};
-
-// Adapter wrapper
-class RectangleAdapter: public Rectangle, private LegacyRectangle
-{
-  public:
-    RectangleAdapter(Coordinate x, Coordinate y, Dimension w, Dimension h):
-      LegacyRectangle(x, y, x + w, y + h)
-    {
-        cout << "RectangleAdapter: create.  (" << x << "," << y << 
-          "), width = " << w << ", height = " << h << endl;
-    }
-    virtual void draw()
-    {
-        cout << "RectangleAdapter: draw." << endl;
-        oldDraw();
+    int getDivisor() {
+        return denom;
     }
 };
 
-int main()
-{
-  Rectangle *r = new RectangleAdapter(120, 200, 60, 40);
-  r->draw();
+void Subject::notify() {
+  // 5. Publisher broadcasts
+  for (int i = 0; i < views.size(); i++)
+    views[i]->update();
+}
+
+class DivObserver: public Observer {
+  public:
+    DivObserver(Subject *mod, int div): Observer(mod, div){}
+    void update() {
+        // 6. "Pull" information of interest
+        int v = getSubject()->getVal(), d = getDivisor();
+        cout << v << " div " << d << " is " << v / d << '\n';
+    }
+};
+
+class ModObserver: public Observer {
+  public:
+    ModObserver(Subject *mod, int div): Observer(mod, div){}
+    void update() {
+        int v = getSubject()->getVal(), d = getDivisor();
+        cout << v << " mod " << d << " is " << v % d << '\n';
+    }
+};
+
+int main() {
+  Subject subj;
+  DivObserver divObs1(&subj, 4); // 7. Client configures the number and
+  DivObserver divObs2(&subj, 3); //    type of Observers
+  ModObserver modObs3(&subj, 3);
+  subj.setVal(14);
 }
