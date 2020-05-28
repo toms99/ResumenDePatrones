@@ -121,4 +121,4 @@ En el repositorio se muestra una implementación en C++ del patrón Observer tom
 - [Leiva, A. (2016, March 05). Patrones de diseño de software. Retrieved May 27, 2020](https://devexperto.com/patrones-de-diseno-software/)
 - [N.d., N. (2007). Design Patterns and Refactoring. Retrieved May 27, 2020](https://sourcemaking.com/design_patterns/adapter)
 
-[Aquí](https://drive.google.com/file/d/1QdUGDE2Dw7k_31784ExMrkh-W9y4AGII/view?usp=sharing) se puede acceder al PDF de este repositorio.
+[Aquí](https://drive.google.com/file/d/1AfZm4DL8rgFmfKKGjsDcTIgSDs8SgwAN/view?usp=sharing) se puede acceder al PDF de este repositorio.
