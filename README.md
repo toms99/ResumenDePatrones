@@ -12,7 +12,7 @@
 
 **Profesor Antonio González Torres.**
 
-**Estudiantes: Tomás Segura.**
+**Estudiantes: Santiago Brenes, Keylin Jiménez y Tomás Segura.**
 
 A lo largo de los años de la carrera como estudiantes hemos enfrentado diversos retos  de software. La mayoría, si no todos, inspirados en desarrollos antiguos o ya existentes. Esto representa una ventaja ya que hemos podido encontrar ayuda en la web que nos amplía la mente, nos enseña muchísimo y, principalmente, nos orienta a solucionar nuestros retos.
 
